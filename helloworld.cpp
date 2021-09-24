@@ -1,5 +1,5 @@
 #include <iostream>//including packages to use everythign in them
-#include <string>
+#include <cstring>
 using namespace std;//Without this you have to write std::cout
 
 int main() {//the function
@@ -13,23 +13,25 @@ int main() {//the function
     while (b == 0) {//
       int guess;
       cin >> guess;
-      if (guess == num) {
+      if (guess == num) {//if they are right
         count++;
-        string count2 = to_string(count);
-        cout << "Aye you got it right! You took " + count2 + " tries!";
+        cout << "Aye you got it right! You took " << count << " tries!";
         cout << "Want to play again?";
-        string x;
-        cin >> x;
-      if (x == "yes") {
-        continue;
+        char input[80];
+	cin >> input;
+      if (strcmp(input,"yes") == 0) {
+	count = count - count;
+	num = rand()%100+1;
+	cout<< "Lets play again! Guess a number!";
       }
       else {
-        a = 1;
-        b = 1;
-      }
+	b = 1;
+	a = 1;
+      }    
+   
 
       }
-      else {
+      else {// if they are wrong
           count++;
           cout << "Dang it your wrong!";
           if (guess > num) {
