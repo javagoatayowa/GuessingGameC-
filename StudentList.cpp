@@ -1,3 +1,4 @@
+//My name is Aneeq Chowdhury and i coded studentlist to add and remove students 11/10/2021
 #include <iostream>//include packages
 #include <cstring>
 #include <vector>
@@ -21,21 +22,33 @@ void add(vector<student*>&in) {//add function
   cin>> input;
   strcpy(s->second, input);
   cout<<"Enter ID";
-  int n;
-  cin>> n;
-  s-> id = n;
+  //int n;
+  //cin>> n;
+  cin>>s->id;
   cout<<"Enter GPA";
-  float n2;
-  cin>> n2;
-  s->GPA = n2;
+  //float n2;
+  //cin>> n2;
+  cin>>s->GPA;
   in.push_back(s);
+}
+void deletestudent(vector<student*>&v) {
+  int idnumber;
+  vector<student*>::iterator it;
+  cout<<"What is the ID number?";
+  cin>> idnumber;
+  for (it = v.begin(); it < v.end(); it++ ) {
+    if ((*it)->id == idnumber) {
+      v.erase(it);
+      return;
+    }
+  }
 }
 
 int main() {//main
   vector <student*> v;
   int a = 0;
   while (a == 0) {
-    char input[6];
+    char input[7];
     cin>>input; 
     if (strcmp(input,"QUIT") == 0) {
       a =1;
@@ -57,18 +70,7 @@ int main() {//main
         }
       }//delete function
       if(strcmp(input,"DELETE") == 0) {
-        cout<<"What id to delete";
-        int idremove;
-        cin>>idremove;
-	
-        for (vector<student*>::iterator it = v.begin(); it != v.end(); it++) {
-	  cout<< ' ' << (*it)->id << endl;
-          if(idremove == (*it)->id) {
-	    v.erase(it);
-            delete *it;
-            break;
-          }
-        }
+        deletestudent(v);
       }
     }
   }
