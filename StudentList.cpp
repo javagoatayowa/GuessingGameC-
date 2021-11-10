@@ -44,7 +44,8 @@ void deletestudent(vector<student*>&v) {
   }
 }
 
-int main() {//main
+int main() {//main\
+  cout<<"hey, welcome to student list. to add a student, type ADD. to print, type PRINT, and to delete, type DELETE!";
   vector <student*> v;
   int a = 0;
   while (a == 0) {
